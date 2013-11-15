@@ -13,6 +13,8 @@ Bundle 'gmarik/vundle'
 
 " General
 Bundle 'scrooloose/nerdtree'
+map <C-n> :NERDTreeToggle<CR>
+
 Bundle 'spf13/vim-colors'
 
 " fugitive.vim: A Git wrapper so awesome, it should be illegal.
@@ -23,6 +25,13 @@ Bundle 'tpope/vim-fugitive'
 " Note: The default leader has been changed to <Leader><Leader>
 " Type ,,w to see the magic happens.
 Bundle 'Lokaltog/vim-easymotion'
+
+" MiniBufExpl - Elegant buffer explorer 
+" https://github.com/fholgado/minibufexpl.vim
+Bundle 'minibufexpl.vim'
+let g:miniBufExplMapCTabSwitchBufs = 1
+let g:miniBufExplMapWindowNavVim = 1
+let g:miniBufExplMapWindowNavArrows = 1
 
 " Go
 " We are using cespare's modification,
@@ -65,6 +74,33 @@ Bundle 'jimenezrick/vimerl'
 filetype plugin indent on
 syntax on
 
+"Auto indent
+set ai
+
+""Smart indet
+set si
+
+"C-style indeting
+set cindent
+
+""Wrap lines
+set wrap
+
+" Turn backup off
+set nobackup
+set nowb
+set noswapfile
+
+"Enable folding, I find it very useful
+set nofen
+set fdl=0
+
+set wildmenu   "显示补全列表
+set wildmode=longest:full   "补全行为设置
+
+" tags https://github.com/lyosha/ctags-go
+set tags+=.,./tags;/
+
 " Easily change my vimrc
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
@@ -98,6 +134,7 @@ endif
 
 set nu			" Line number
 set foldenable		" auto fold code
+set ignorecase		" Ignore case when searching
 set hlsearch		" highlite search
 set showmatch		" show matching {}/()
 
@@ -106,8 +143,32 @@ set pastetoggle=<F12>	" pastetoggle
 " Yank from the cursor to the end of the line
 nnoremap Y y$
 
-" -------------------------------------------
+"Have the mouse enabled all the time:
+set mouse=a
 
+"Set mapleader
+let mapleader = ","
+let g:mapleader = ","
+"Fast saving
+nmap <leader>w :w!<cr>
+"Fast Quit
+map <leader>q :q<cr>
+"Undolist 
+map <leader>u :undolist<cr>
+"Open Files Dir
+map <leader>f :Ex<cr>
+"Remap VIM 0
+map 0 ^
+"Switch to current dir
+map <leader>cd :cd %:p:h<cr>
+inoremap ;; <Esc>
+nmap :X :x
+nmap :W :w
+nmap :Q :q
+nmap :qa :quitall
+nmap :QA :quitall
+
+" -------------------------------------------
 
 " Python indent
 au FileType python setlocal tabstop=8 expandtab shiftwidth=4 softtabstop=4
@@ -144,7 +205,7 @@ let g:tagbar_type_go = {
 \ }
 
 " Translator information
-let g:po_translator = "Nan Deng <monnand@gmail.com>"
+let g:po_translator = "Jiang Bian <borderj@gmail.com>"
 let g:po_lang_team = "Chinese (Simplified)"
 
 " Let's gofmt it before saving it
