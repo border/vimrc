@@ -10,7 +10,7 @@ My vimrc. Designed to work better with [Go].
 * go get -u github.com/nsf/gocode
 * go get -u github.com/jstemmer/gotags
 * go get -u github.com/golang/lint/golint
-* go get -u github.com/golang/lint/golint
+
 
 
 ## VIM Plug-in List
@@ -33,5 +33,6 @@ My vimrc. Designed to work better with [Go].
 
 
 [Go]: http://golang.org
+
 
 
