@@ -50,6 +50,10 @@ Bundle 'dgryski/vim-godef'
 " To install gocode:
 "   go get github.com/nsf/gocode
 Bundle 'undx/vim-gocode'
+set shiftwidth=4
+set expandtab
+set tabstop=4
+set softtabstop=4
 
 " Markdown
 Bundle 'monnand/vim-markdown'
