@@ -33,6 +33,28 @@ let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapWindowNavArrows = 1
 
+"---------------------------------------------------------------------------
+" bracket auto closing
+" http://www.linuxgem.org/tip/bracket-auto-closing-in-vim.html
+"---------------------------------------------------------------------------
+:inoremap ( ()<ESC>i
+:inoremap ) <c-r>=ClosePair(')')<CR>
+:inoremap { {}<ESC>i
+:inoremap } <c-r>=ClosePair('}')<CR>
+:inoremap [ []<ESC>i
+:inoremap ] <c-r>=ClosePair(']')<CR>
+":inoremap < <><ESC>i
+":inoremap > <c-r>=ClosePair('>')<CR>
+
+function ClosePair(char)
+    if getline('.')[col('.') - 1] == a:char
+        return "\<Right>"
+    else
+        return a:char
+    endif
+endf
+
+
 " Go
 " We are using cespare's modification,
 " which uses bradfitz's goimports instead of gofmt.
