@@ -65,11 +65,6 @@ endf
 "   go get github.com/bradfitz/goimports
 Bundle 'cespare/vim-golang'
 
-" To install godef:
-"   go get code.google.com/p/rog-go/exp/cmd/godef
-Bundle 'dgryski/vim-godef'
-let g:godef_split=0
-
 " To install gocode:
 "   go get github.com/nsf/gocode
 Bundle 'undx/vim-gocode'
