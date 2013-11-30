@@ -33,26 +33,40 @@ let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapWindowNavArrows = 1
 
-"---------------------------------------------------------------------------
-" bracket auto closing
-" http://www.linuxgem.org/tip/bracket-auto-closing-in-vim.html
-"---------------------------------------------------------------------------
-:inoremap ( ()<ESC>i
-:inoremap ) <c-r>=ClosePair(')')<CR>
-:inoremap { {}<ESC>i
-:inoremap } <c-r>=ClosePair('}')<CR>
-:inoremap [ []<ESC>i
-:inoremap ] <c-r>=ClosePair(']')<CR>
-":inoremap < <><ESC>i
-":inoremap > <c-r>=ClosePair('>')<CR>
+" supertab
+Bundle "ervandew/supertab"
+let g:SuperTabDefaultCompletionType = "context"
+"let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 
-function ClosePair(char)
-    if getline('.')[col('.') - 1] == a:char
-        return "\<Right>"
-    else
-        return a:char
-    endif
-endf
+" Powerline
+Bundle 'Lokaltog/vim-powerline'
+let g:Powerline_symbols = 'unicode'
+
+"代码排版缩进标识
+Bundle 'Yggdroot/indentLine'
+let g:indentLine_noConcealCursor = 1
+let g:indentLine_color_term = 0
+let g:indentLine_char = '¦'
+
+
+"主题 solarized
+Bundle 'altercation/vim-colors-solarized'
+"let g:solarized_termcolors=256
+let g:solarized_termtrans=1
+let g:solarized_contrast="normal"
+let g:solarized_visibility="normal"
+
+"主题 molokai
+Bundle 'tomasr/molokai'
+let g:molokai_original = 1
+
+" 修改主题和颜色展示
+"colorscheme solarized
+set background=dark
+set t_Co=256
+
+"colorscheme molokai
+colorscheme desert"
 
 
 " Go
@@ -79,9 +93,31 @@ Bundle 'monnand/vim-markdown'
 " HTML
 Bundle 'mattn/zencoding-vim'
 
+"迄今为止用到的最好的自动VIM自动补全插件
+Bundle 'Valloric/YouCompleteMe'
+""youcompleteme  默认tab  s-tab 和自动补全冲突
+"let g:ycm_key_list_select_completion=['<c-n>']
+let g:ycm_key_list_select_completion = ['<Down>']
+""let g:ycm_key_list_previous_completion=['<c-p>']
+let g:ycm_key_list_previous_completion = ['<Up>']
+
+
+" --- taglist
+Bundle 'taglist.vim'
+nmap <silent><F8> :TlistToggle<CR>
+imap <silent><F8> <C-o>:TlistToggle<CR>
+let Tlist_Use_SingleClick = 1
+let Tlist_Use_Right_Window = 1
+let Tlist_Show_One_File = 1
+let tlist_php_settings ='php;c:class;d:constant;f:function'
+
 " Tagbar
 Bundle 'majutsushi/tagbar'
-nmap <F8> :TagbarToggle<CR>
+nnoremap <silent><F7> :TagbarToggle<CR>
+let g:tagbar_autofocus = 1
+
+"自动补全单引号，双引号等
+Bundle 'Raimondi/delimitMate'
 
 " .po file
 Bundle 'po.vim'
@@ -91,6 +127,56 @@ Bundle 'molokai'
 
 " erlang
 Bundle 'jimenezrick/vimerl'
+
+Bundle 'kien/rainbow_parentheses.vim'
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['black',       'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
+let g:rbpt_max = 40
+let g:rbpt_loadcmd_toggle = 0
+
+" --- vim-airline 
+Bundle 'bling/vim-airline'
+set ttimeoutlen=50
+let g:airline_left_sep = ''
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_sep = ''
+let g:airline_linecolumn_prefix = ''
+let g:airline_linecolumn_prefix = ''
+let g:airline_linecolumn_prefix = ''
+let g:airline#extensions#whitespace#enabled = 0
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#syntastic#enabled = 0
+let g:airline#extensions#tagbar#enabled = 1
+let g:airline#extensions#csv#enabled = 0
+let g:airline#extensions#hunks#enabled = 0
+let g:airline#extensions#virtualenv#enabled = 1
+
+let g:airline_theme_patch_func = 'AirlineThemePatch'
+function! AirlineThemePatch(palette)
+    if g:airline_theme == 'wombat'
+        for colors in values(a:palette.inactive)
+            let colors[3] = 235
+        endfor
+    endif
+endfunction
+
 
 " ---------------- Some general hack --------------
 filetype plugin indent on

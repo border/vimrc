@@ -29,9 +29,20 @@ My vimrc. Designed to work better with [Go].
 * Bundle 'po.vim'
 * Bundle 'molokai'
 * Bundle 'jimenezrick/vimerl'
+* Bundle "ervandew/supertab"
+* Bundle 'Lokaltog/vim-powerline'
+* Bundle 'Yggdroot/indentLine'
+* Bundle 'altercation/vim-colors-solarized'
+* Bundle 'tomasr/molokai'
+* Bundle 'Valloric/YouCompleteMe'
+* Bundle 'taglist.vim'
+* Bundle 'Raimondi/delimitMate'
+* Bundle 'kien/rainbow_parentheses.vim'
+* Bundle 'bling/vim-airline'
 
 
 [Go]: http://golang.org
+
 
 
 
