@@ -34,7 +34,7 @@ let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapWindowNavArrows = 1
 
 " supertab
-Bundle "ervandew/supertab"
+Bundle 'ervandew/supertab'
 let g:SuperTabDefaultCompletionType = "context"
 "let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 
@@ -62,11 +62,23 @@ let g:molokai_original = 1
 
 " 修改主题和颜色展示
 "colorscheme solarized
-set background=dark
-set t_Co=256
+"set background=dark
+"set t_Co=256
 
 "colorscheme molokai
-colorscheme desert"
+"colorscheme desert"
+
+if !has('gui_running')
+    let g:solarized_termtrans=1
+
+    if (&t_Co >= 256 || $TERM == 'xterm-256color')
+        " Do nothing, it handles itself.
+    else
+        " Make Solarized use 16 colors for
+        " Terminal support
+        let g:solarized_termcolors=16
+    endif
+endif
 
 
 " Go
@@ -97,8 +109,8 @@ Bundle 'mattn/zencoding-vim'
 Bundle 'Valloric/YouCompleteMe'
 ""youcompleteme  默认tab  s-tab 和自动补全冲突
 "let g:ycm_key_list_select_completion=['<c-n>']
-let g:ycm_key_list_select_completion = ['<Down>']
 ""let g:ycm_key_list_previous_completion=['<c-p>']
+let g:ycm_key_list_select_completion = ['<Down>']
 let g:ycm_key_list_previous_completion = ['<Up>']
 
 
