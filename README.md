@@ -3,14 +3,23 @@ vimrc
 
 My vimrc. Designed to work better with [Go].
 
+## Vundle Install
+
+    git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+    vim +BundleInstall +qall
+
+
+## YouCompleteMe Install
+
+* https://github.com/Valloric/YouCompleteMe
+
+
 ## Golang Package
 
 * go get -u github.com/bradfitz/goimports
 * go get -u github.com/nsf/gocode
 * go get -u github.com/jstemmer/gotags
 * go get -u github.com/golang/lint/golint
-
-
 
 
 ## VIM Plug-in List
@@ -42,7 +51,6 @@ My vimrc. Designed to work better with [Go].
 
 
 [Go]: http://golang.org
-
 
 
 
