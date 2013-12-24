@@ -13,6 +13,8 @@ My vimrc. Designed to work better with [Go].
 
 * https://github.com/Valloric/YouCompleteMe
 
+    cd ~/.vim/bundle/YouCompleteMe
+    ./install.sh --clang-completer
 
 ## Golang Package
 
