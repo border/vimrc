@@ -99,6 +99,8 @@ set expandtab
 set tabstop=4
 set softtabstop=4
 
+Bundle 'Blackrush/vim-gocode'
+
 " Markdown
 Bundle 'monnand/vim-markdown'
 
@@ -289,6 +291,67 @@ nmap :qa :quitall
 nmap :QA :quitall
 
 " -------------------------------------------
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Set FileEncodeing
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set fileencodings=utf-8,cp936,big5,latin1
+an 20.4109 &Edit.-SEP6- <Nop>
+an 20.4109.10 &Edit.Encoding.&GBK :set encoding=utf-8<CR>
+an 20.4109.11 &Edit.Encoding.&Big5 :set encoding=big5<CR>
+an 20.4109.12 &Edit.Encoding.&UTF-8 :set encoding=utf-8<CR>
+an 20.4119.10 &Edit.Fileencodings.&GBK :set fileencodings=gbk<CR>
+an 20.4119.11 &Edit.Fileencodings.&Big5 :set fileencodings=big5<CR>
+an 20.4119.12 &Edit.Fileencodings.&UTF-8 :set fileencodings=utf-8<CR>
+an 20.4139 &Edit.gb  convert.gb->big5 :%!autogb -i gb -o big5<CR>
+an 20.4139 &Edit.gb  convert.gb->utf8 :%!autogb -i gb -o utf8<CR>
+an 20.4149 &Edit.big5  convert.big5->gb :%!autogb -i big5 -o gb<CR>
+an 20.4149 &Edit.big5  convert.big5->utf8 :%!autogb -i big5 -o utf8<CR>
+an 20.4159 &Edit.utf8  convert.utf8->gb :%!autogb -i utf8 -o gb<CR>
+an 20.4159 &Edit.utf8  convert.utf8->big5 :%!autogb -i utf8 -o big5<CR>
+
+if has("multi_byte")
+    " Set fileencoding priority
+    if getfsize(expand("%")) > 0
+        set fileencodings=ucs-bom,utf-8,cp936,big5,euc-jp,euc-kr,latin1
+    else
+        set fileencodings=cp936,big5,euc-jp,euc-kr,latin1
+    endif
+
+    " CJK environment detection and corresponding setting
+    if v:lang =~ "^zh_CN"
+        " Use cp936 to support GBK, euc-cn == gb2312
+        set encoding=gb2312
+        set termencoding=utf-8
+        set fileencoding=utf-8
+    elseif v:lang =~ "^zh_TW"
+        " cp950, big5 or euc-tw
+        " Are they equal to each other?
+        set encoding=big5
+        set termencoding=big5
+        set fileencoding=big5
+    elseif v:lang =~ "^ko"
+        " Copied from someone's dotfile, untested
+        set encoding=euc-kr
+        set termencoding=euc-kr
+        set fileencoding=euc-kr
+    elseif v:lang =~ "^ja_JP"
+        " Copied from someone's dotfile, unteste
+        set encoding=euc-jp
+        set termencoding=euc-jp
+        set fileencoding=euc-jp
+    endif
+    " Detect UTF-8 locale, and replace CJK setting if needed
+    if v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
+        set encoding=utf-8
+        set termencoding=utf-8
+        set fileencoding=utf-8
+    endif
+else
+    echoerr "Sorry, this version of (g)vim was not compiled with multi_byte"
+endif
+
+
 
 " Python indent
 au FileType python setlocal tabstop=8 expandtab shiftwidth=4 softtabstop=4
