@@ -28,10 +28,24 @@ Bundle 'Lokaltog/vim-easymotion'
 
 " MiniBufExpl - Elegant buffer explorer 
 " https://github.com/fholgado/minibufexpl.vim
-Bundle 'minibufexpl.vim'
-let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapWindowNavArrows = 1
+"Bundle 'minibufexpl.vim'
+"let g:miniBufExplMapCTabSwitchBufs = 1
+"let g:miniBufExplMapWindowNavVim = 1
+"let g:miniBufExplMapWindowNavArrows = 1
+
+" Bundle 'jlanzarotta/bufexplorer'
+" Buffer Explorer / Browser
+" To start exploring in the current window, use: >
+"   \be   or   :BufExplorer
+" To start exploring in a newly split horizontal window, use: >
+"  \bs   or   :BufExplorerHorizontalSplit
+" To start exploring in a newly split vertical window, use: >
+"  \bv   or   :BufExplorerVerticalSplit
+Bundle 'jlanzarotta/bufexplorer'
+let g:bufExplorerFindActive=1        " Go to active window."
+let g:bufExplorerShowDirectories=1   " Show directories."
+let g:bufExplorerShowRelativePath=1  " Show relative paths."
+
 
 " supertab
 Bundle 'ervandew/supertab'
