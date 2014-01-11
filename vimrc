@@ -1,7 +1,5 @@
 set nocompatible
 
-set background=dark
-
 " Set the leader
 let mapleader = ','
 
@@ -46,7 +44,6 @@ let g:bufExplorerFindActive=1        " Go to active window."
 let g:bufExplorerShowDirectories=1   " Show directories."
 let g:bufExplorerShowRelativePath=1  " Show relative paths."
 
-
 " supertab
 Bundle 'ervandew/supertab'
 let g:SuperTabDefaultCompletionType = "context"
@@ -76,11 +73,11 @@ let g:molokai_original = 1
 
 " 修改主题和颜色展示
 "colorscheme solarized
-"set background=dark
-"set t_Co=256
-
 "colorscheme molokai
-"colorscheme desert"
+colorscheme desert
+
+set background=dark
+set t_Co=256
 
 if !has('gui_running')
     let g:solarized_termtrans=1
@@ -113,6 +110,18 @@ set expandtab
 set tabstop=4
 set softtabstop=4
 
+"Tab configuration
+map <leader>tn :tabnext<cr>
+map <leader>te :tabedit 
+map <leader>tc :tabclose<cr>
+map <leader>tm :tabmove<cr>
+try
+    set switchbuf=usetab
+    set stal=2
+catch
+endtry
+
+"
 Bundle 'Blackrush/vim-gocode'
 
 " Markdown
