@@ -91,6 +91,11 @@ if !has('gui_running')
     endif
 endif
 
+" C/C++
+" http://www.fortystones.com/vim-plugins-c-cplusplus-developer/
+Bundle 'c.vim'
+let g:C_UseTool_cmake = 'yes' 
+let g:C_UseTool_doxygen = 'yes' 
 
 " Go
 " We are using cespare's modification,
