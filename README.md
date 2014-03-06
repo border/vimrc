@@ -53,6 +53,14 @@ My vimrc. Designed to work better with [Go].
 * Bundle 'bling/vim-airline'
 
 
+## VIM Tips
+
+* Tab Quick Switch
+    * Control + n
+    * Tab + Shift
+* Buffer
+    * NORMAL ,be
+
 [Go]: http://golang.org
 
 

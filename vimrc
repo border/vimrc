@@ -45,6 +45,8 @@ let g:bufExplorerShowDirectories=1   " Show directories."
 let g:bufExplorerShowRelativePath=1  " Show relative paths."
 
 " supertab
+" Control + n
+" tab + shift
 Bundle 'ervandew/supertab'
 let g:SuperTabDefaultCompletionType = "context"
 "let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
