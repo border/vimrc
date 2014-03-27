@@ -15,6 +15,14 @@ map <C-n> :NERDTreeToggle<CR>
 
 Bundle 'spf13/vim-colors'
 
+Bundle 'gtags.vim'
+"gtags
+":map <C-[> :Gtags<CR><CR>
+":map <C-/> :Gtags -r<CR><CR>
+":map <F10> :cclose<CR>
+":map <F11> :cp<CR>
+":map <F12> :cn<CR>
+
 " fugitive.vim: A Git wrapper so awesome, it should be illegal.
 Bundle 'tpope/vim-fugitive'
 
@@ -252,6 +260,9 @@ set wildmode=longest:full   "补全行为设置
 
 " tags https://github.com/lyosha/ctags-go
 set tags+=.,./tags;/
+" Ctrl + ]           --转到函数定义           [ctags跳转]
+" Ctrl + T           --返回调用函数           [ctags跳转]
+" g Ctrl+]           --列出可选跳转列表       [ctags跳转]
 
 " Easily change my vimrc
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
