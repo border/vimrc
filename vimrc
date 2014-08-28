@@ -12,6 +12,14 @@ Bundle 'gmarik/vundle'
 " General
 Bundle 'scrooloose/nerdtree'
 map <C-n> :NERDTreeToggle<CR>
+let NERDTreeShowBookmarks=1
+let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
+let NERDTreeChDirMode=0
+let NERDTreeQuitOnOpen=1
+let NERDTreeMouseMode=2
+let NERDTreeShowHidden=1
+let NERDTreeKeepTreeInNewTab=1
+let g:nerdtree_tabs_open_on_gui_startup=0
 
 Bundle 'spf13/vim-colors'
 
@@ -58,10 +66,6 @@ let g:bufExplorerShowRelativePath=1  " Show relative paths."
 Bundle 'ervandew/supertab'
 let g:SuperTabDefaultCompletionType = "context"
 "let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-
-" Powerline
-Bundle 'Lokaltog/vim-powerline'
-let g:Powerline_symbols = 'unicode'
 
 "代码排版缩进标识
 Bundle 'Yggdroot/indentLine'
