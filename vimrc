@@ -5,9 +5,59 @@ let mapleader = ','
 
 " Setup Vundle
 filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
+
+" set the runtime path to include Vundle and initialize
+" mkdir ~/.vim/bundle
+" cd ~/.vim/bundle
+" git clone https://github.com/gmarik/Vundle.vim.git 
+" ~/.vim/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+" Golang
+" https://github.com/fatih/vim-go
+" :GoInstallBinaries to install errcheck, gocode, godef, goimports, golint, gotags
+" – 执行:GoLint，运行golint在当前Go源文件上。
+" – 执行:GoDoc，打开当前光标对应符号的Go文档。
+" – 执行:GoVet，在当前目录下运行go vet在当前Go源文件上。
+" – 执行:GoRun，编译运行当前main package。
+" – 执行:GoBuild，编译当前包，这取决于你的源文件，GoBuild不产生结果文件。
+" – 执行:GoInstall，安装当前包。
+" – 执行:GoTest，测试你当前路径下地_test.go文件。
+" – 执行:GoCoverage，创建一个测试覆盖结果文件，并打开浏览器展示当前包的情况。
+" – 执行:GoErrCheck，检查当前包种可能的未捕获的errors。
+" – 执行:GoFiles，显示当前包对应的源文件列表。
+" – 执行:GoDeps，显示当前包的依赖包列表。
+" – 执行:GoImplements，显示当前类型实现的interface列表。
+" – 执行:GoRename [to]，将当前光标下的符号替换为[to]
+Plugin 'fatih/vim-go'
+" vim-go settings
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+"let g:go_fmt_command = "goimports"
+
+" vim-go custom mappings
+au FileType go nmap <Leader>s <Plug>(go-implements)
+au FileType go nmap <Leader>i <Plug>(go-info)
+au FileType go nmap <Leader>gd <Plug>(go-doc)
+au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>c <Plug>(go-coverage)
+au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+au FileType go nmap <Leader>e <Plug>(go-rename)
+
+Plugin 'SirVer/ultisnips'
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " General
 Bundle 'scrooloose/nerdtree'
@@ -20,8 +70,6 @@ let NERDTreeMouseMode=2
 let NERDTreeShowHidden=1
 let NERDTreeKeepTreeInNewTab=1
 let g:nerdtree_tabs_open_on_gui_startup=0
-
-Bundle 'spf13/vim-colors'
 
 Bundle 'gtags.vim'
 "gtags
@@ -73,90 +121,27 @@ let g:indentLine_noConcealCursor = 1
 let g:indentLine_color_term = 0
 let g:indentLine_char = '¦'
 
-
-"主题 solarized
-Bundle 'altercation/vim-colors-solarized'
-"let g:solarized_termcolors=256
-let g:solarized_termtrans=1
-let g:solarized_contrast="normal"
-let g:solarized_visibility="normal"
-
-"主题 molokai
-Bundle 'tomasr/molokai'
-let g:molokai_original = 1
-
-" 修改主题和颜色展示
-"colorscheme solarized
-"colorscheme molokai
-colorscheme desert
-
-set background=dark
-set t_Co=256
-
-if !has('gui_running')
-    let g:solarized_termtrans=1
-
-    if (&t_Co >= 256 || $TERM == 'xterm-256color')
-        " Do nothing, it handles itself.
-    else
-        " Make Solarized use 16 colors for
-        " Terminal support
-        let g:solarized_termcolors=16
-    endif
-endif
-
 " C/C++
 " http://www.fortystones.com/vim-plugins-c-cplusplus-developer/
 Bundle 'c.vim'
 let g:C_UseTool_cmake = 'yes' 
 let g:C_UseTool_doxygen = 'yes' 
 
-" Go
-" We are using cespare's modification,
-" which uses bradfitz's goimports instead of gofmt.
-"
-" With goimports, you can add missing imports automatically.
-"
-" To install goimport:
-"   go get github.com/bradfitz/goimports
-Bundle 'cespare/vim-golang'
-
-" To install gocode:
-"   go get github.com/nsf/gocode
-Bundle 'undx/vim-gocode'
-set shiftwidth=4
-set expandtab
-set tabstop=4
-set softtabstop=4
-
-"Tab configuration
-map <leader>tn :tabnext<cr>
-map <leader>te :tabedit 
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove<cr>
-try
-    set switchbuf=usetab
-    set stal=2
-catch
-endtry
-
-"
-Bundle 'Blackrush/vim-gocode'
-
 " Markdown
 Bundle 'monnand/vim-markdown'
 
 " HTML
-Bundle 'mattn/zencoding-vim'
+Bundle 'mattn/emmet-vim'
 
-"迄今为止用到的最好的自动VIM自动补全插件
-Bundle 'Valloric/YouCompleteMe'
+" Has Same Error with Golang
+"Bundle 'Valloric/YouCompleteMe'
 ""youcompleteme  默认tab  s-tab 和自动补全冲突
+" YCM settings
 "let g:ycm_key_list_select_completion=['<c-n>']
 ""let g:ycm_key_list_previous_completion=['<c-p>']
-let g:ycm_key_list_select_completion = ['<Down>']
-let g:ycm_key_list_previous_completion = ['<Up>']
-
+"let g:ycm_key_list_select_completion = ['<Down>']
+"let g:ycm_key_list_previous_completion = ['<Up>']
+""let g:ycm_key_invoke_completion = '<C-Space>' -- MAC下需要替换位其他键
 
 " --- taglist
 Bundle 'taglist.vim'
@@ -177,12 +162,6 @@ Bundle 'Raimondi/delimitMate'
 
 " .po file
 Bundle 'po.vim'
-
-" color scheme
-Bundle 'molokai'
-
-" erlang
-Bundle 'jimenezrick/vimerl'
 
 Bundle 'kien/rainbow_parentheses.vim'
 let g:rbpt_colorpairs = [
@@ -234,9 +213,21 @@ function! AirlineThemePatch(palette)
 endfunction
 
 
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+
+
+" ---------------- Programming Language --------------
+syntax enable 
+
+" Golang
+au BufRead,BufNewFile *.go set filetype=go
+
+" Python indent
+au FileType python setlocal tabstop=8 expandtab shiftwidth=4 softtabstop=4"
+
 " ---------------- Some general hack --------------
 filetype plugin indent on
-syntax on
 
 "Auto indent
 set ai
@@ -396,50 +387,22 @@ else
     echoerr "Sorry, this version of (g)vim was not compiled with multi_byte"
 endif
 
+set shiftwidth=4
+set expandtab
+set tabstop=4
+set softtabstop=4
 
-
-" Python indent
-au FileType python setlocal tabstop=8 expandtab shiftwidth=4 softtabstop=4
-
-" Go tags
-" To install gotags:
-"     go get -u github.com/jstemmer/gotags
-let g:tagbar_type_go = {
-    \ 'ctagstype' : 'go',
-    \ 'kinds'     : [
-        \ 'p:package',
-        \ 'i:imports:1',
-        \ 'c:constants',
-        \ 'v:variables',
-        \ 't:types',
-        \ 'n:interfaces',
-        \ 'w:fields',
-        \ 'e:embedded',
-        \ 'm:methods',
-        \ 'r:constructor',
-        \ 'f:functions'
-    \ ],
-    \ 'sro' : '.',
-    \ 'kind2scope' : {
-        \ 't' : 'ctype',
-        \ 'n' : 'ntype'
-    \ },
-    \ 'scope2kind' : {
-        \ 'ctype' : 't',
-        \ 'ntype' : 'n'
-    \ },
-    \ 'ctagsbin'  : 'gotags',
-    \ 'ctagsargs' : '-sort -silent'
-\ }
+"Tab configuration
+map <leader>tn :tabnext<cr>
+map <leader>te :tabedit 
+map <leader>tc :tabclose<cr>
+map <leader>tm :tabmove<cr>
+try
+    set switchbuf=usetab
+    set stal=2
+catch
+endtry
 
 " Translator information
 let g:po_translator = "Jiang Bian <borderj@gmail.com>"
 let g:po_lang_team = "Chinese (Simplified)"
-
-" Let's gofmt it before saving it
-autocmd BufWritePre *.go :Fmt
-
-" golint
-" To install golint:
-"   go get github.com/golang/lint/golint
-set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
