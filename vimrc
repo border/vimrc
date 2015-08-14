@@ -291,6 +291,7 @@ if has('statusline')
 endif
 
 set nu			" Line number
+set rnu         " relative Line number"
 set foldenable		" auto fold code
 set ignorecase		" Ignore case when searching
 set hlsearch		" highlite search
