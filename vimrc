@@ -246,6 +246,8 @@ set nobackup
 set nowb
 set noswapfile
 
+set ignorecase
+
 "Enable folding, I find it very useful
 set nofen
 set fdl=0
