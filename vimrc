@@ -97,12 +97,13 @@ Bundle 'Lokaltog/vim-easymotion'
 
 " Bundle 'jlanzarotta/bufexplorer'
 " Buffer Explorer / Browser
+" nead leader key, now leader key is ','
 " To start exploring in the current window, use: >
-"   \be   or   :BufExplorer
+"  ,be    or  \be   or   :BufExplorer
 " To start exploring in a newly split horizontal window, use: >
-"  \bs   or   :BufExplorerHorizontalSplit
+"  ,bs     or  \bs   or   :BufExplorerHorizontalSplit
 " To start exploring in a newly split vertical window, use: >
-"  \bv   or   :BufExplorerVerticalSplit
+"  ,bv     or  \bv   or   :BufExplorerVerticalSplit
 Bundle 'jlanzarotta/bufexplorer'
 let g:bufExplorerFindActive=1        " Go to active window."
 let g:bufExplorerShowDirectories=1   " Show directories."
