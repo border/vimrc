@@ -2,6 +2,8 @@ set nocompatible
 
 " Set the leader
 let mapleader = ','
+set ts=4
+set expandtab
 
 " Setup Vundle
 filetype off
@@ -99,7 +101,7 @@ Bundle 'Lokaltog/vim-easymotion'
 " Buffer Explorer / Browser
 " nead leader key, now leader key is ','
 " To start exploring in the current window, use: >
-"  ,be    or  \be   or   :BufExplorer
+"   ,be    or  \be   or   :BufExplorer
 " To start exploring in a newly split horizontal window, use: >
 "  ,bs     or  \bs   or   :BufExplorerHorizontalSplit
 " To start exploring in a newly split vertical window, use: >
@@ -220,12 +222,7 @@ call vundle#end()            " required
 
 " ---------------- Programming Language --------------
 syntax enable 
-
-" Golang
 au BufRead,BufNewFile *.go set filetype=go
-
-" Python indent
-au FileType python setlocal tabstop=8 expandtab shiftwidth=4 softtabstop=4"
 
 " ---------------- Some general hack --------------
 filetype plugin indent on
@@ -294,7 +291,7 @@ if has('statusline')
 endif
 
 set nu			" Line number
-set rnu         " relative Line number"
+"set rnu			" relative Line number
 set foldenable		" auto fold code
 set ignorecase		" Ignore case when searching
 set hlsearch		" highlite search
@@ -410,3 +407,6 @@ endtry
 " Translator information
 let g:po_translator = "Jiang Bian <borderj@gmail.com>"
 let g:po_lang_team = "Chinese (Simplified)"
+
+" set clipboard=unnamed
+set clipboard=unnamed
