@@ -56,11 +56,6 @@ au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
 au FileType go nmap <Leader>dt <Plug>(go-def-tab)
 au FileType go nmap <Leader>e <Plug>(go-rename)
 
-Plugin 'SirVer/ultisnips'
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
 " General
 Bundle 'scrooloose/nerdtree'
 map <C-n> :NERDTreeToggle<CR>
@@ -303,7 +298,7 @@ set pastetoggle=<F12>	" pastetoggle
 nnoremap Y y$
 
 "Have the mouse enabled all the time:
-set mouse=a
+set mouse=v
 
 "Set mapleader
 let mapleader = ","
@@ -408,5 +403,5 @@ endtry
 let g:po_translator = "Jiang Bian <borderj@gmail.com>"
 let g:po_lang_team = "Chinese (Simplified)"
 
-" set clipboard=unnamed
 set clipboard=unnamed
+set backspace=2

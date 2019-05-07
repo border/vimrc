@@ -60,6 +60,12 @@ My vimrc. Designed to work better with [Go].
     * Tab + Shift
 * Buffer
     * NORMAL ,be
+* vim-go change 'gd' shortcut key to 'god'
+```
+vi ~/.vim/bundle/vim-go/ftplugin/go.vim +44
+from: 44:  nnoremap <buffer> <silent> gd :GoDef<cr>
+to: 44:  nnoremap <buffer> <silent> god :GoDef<cr>
+```
 
 [Go]: http://golang.org
 
